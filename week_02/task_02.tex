@@ -1,0 +1,126 @@
+\documentclass[a4paper,14pt]{article} % тип документа
+%\documentclass[14pt]{extreport}
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+
+\usepackage{geometry} % Простой способ задавать поля
+\geometry{top=25mm}
+\geometry{bottom=35mm}
+\geometry{left=20mm}
+\geometry{right=20mm}
+
+\setcounter{section}{0}
+
+%%%Библиотеки
+%\usepackage[warn]{mathtext}
+%\usepackage[T2A]{fontenc} % кодировка
+\usepackage[utf8]{inputenc} % кодировка исходного текста
+\usepackage[english,russian]{babel} % локализация и переносы
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{wasysym}
+\usepackage{graphicx}%Вставка картинок правильная
+\usepackage{float}%"Плавающие" картинки
+\usepackage{wrapfig}%Обтекание фигур (таблиц, картинок и прочего)
+\usepackage{fancyhdr} %загрузим пакет
+\usepackage{lscape}
+\usepackage{xcolor}
+\usepackage{dsfont}
+%\usepackage{indentfirst}
+\usepackage[normalem]{ulem}
+\usepackage{hyperref}
+
+
+
+
+%%% DRAGON STUFF
+\usepackage{scalerel}
+\usepackage{mathtools}
+
+\DeclareMathOperator*{\myint}{\ThisStyle{\rotatebox{25}{$\SavedStyle\!\int\!\!\!$}}}
+
+\DeclareMathOperator*{\myoint}{\ThisStyle{\rotatebox{25}{$\SavedStyle\!\oint\!\!\!$}}}
+
+\usepackage{scalerel}
+\usepackage{graphicx}
+%%% END 
+
+%%%Конец библиотек
+
+%%%Настройка ссылок
+\hypersetup
+{
+colorlinks=true,
+linkcolor=blue,
+filecolor=magenta,
+urlcolor=blue
+}
+%%%Конец настройки ссылок
+
+
+%%%Настройка колонтитулы
+	\pagestyle{fancy}
+	\fancyhead{}
+	\fancyhead[L]{Домашнее задание}
+	\fancyhead[R]{Крейнин Матвей, группа Б05-005}
+	\fancyfoot{}
+    \fancyfoot[C]{\thepage}
+    \fancyfoot[R]{ОВАиТК}
+%%%конец настройки колонтитулы
+
+
+
+\begin{document}
+%%%%Начало документа%%%%
+
+\section{Задание 2}
+\subsection{Задача 1}
+Докажите, что в циклической группе конечного порядка всякая подгруппа является циклической.
+
+Пусть $H < G$, где G -- циклическая группа с порождающим элементом a, и $b \in H : b = a^n$, при чём b такое, что n -- наименьшая степень, при которой $a^n$ входит в подгруппу.
+Тогда $\forall c \in H$ можно записать: $c = a^m$, $m = n \cdot d + r, (m > n)$, но тогда и $a^r$ будет входить в подгруппу, т.к. $a^q = e$, (q -- порядок элемента).
+$a^{q-n} = b^{-1} \in H \longrightarrow (b^{-1})^d \cdot c = a^{dq - dn} \cdot a^{nd+r} = a^{dq} \cdot a^r = a^r \in H$, получили противоречие, 
+т.к. $0 \leq r < n$, а n -- по условию минимальная степень с таким свойством, сл-но $r = 0$, 
+но это и будет означать, что подгруппа циклическая, т.к. $\forall c \in H \exists d : b^d = e$.
+
+\subsection{Задача 2}
+Порядок элемента a равен d (конечное число). Найти порядок элемента $a^k$.
+
+По определению $a^d = e$, где d -- наименьшее такое число.
+Тогда $(a^k)^q = e$, где q -- искомый порядок, то есть $a^{kq} = e \longrightarrow d | kq$, 
+где q -- наименьшее, получаем, что $q = \frac{\text{НОК(d, k)}}{k}$.
+
+\underline{\textbf{Ответ:}} $q = \frac{\text{НОК(d, k)}}{k}$.
+
+\subsection{Задача 3}
+Найдите все подгруппы циклической группы порядка n.
+
+Пусть a -- порождающий элемент G и $H < G$. $a^n = e$, e должна будет принадлежать любой подгруппе,
+следовательно $q | n, b = a^q$, где b -- порождающий элемент подгруппы, то есть число подгрупп не можеть быть больше количества делителей n.
+Но и меньше тоже не может, потому что каждый делитель порождает подгруппу, и эти подгруппы не совпадают.
+
+\underline{\textbf{Ответ:}} Все делители числа n.
+
+
+\subsubsection*{1.} Сколько различных решений имеет уравнение $x^k = e$ в группе $C_m$, 
+\newline где $k, m \in \mathds{N}$?
+
+Пусть $a^y = x$ (т.к. циклическая группа), тогда уравнение принимает вид: $a^{yk} = e = a^m$, то есть уравнение равносильно следующему:
+$m|yk$, будем искать кол-во решений при условии, что $y < m$ (т.е. решения разные). y должен делиться на $\frac{\text{НОК(m, k)}}{k}$, чтобы
+выполнялось первое условие. При наложении второго получим кол-во решений для y равное $\frac{km}{\text{НОК(m, k)}} = \text{НОД(k, m)}$
+
+\underline{\textbf{Ответ: }} $\text{НОД(k, m)}$.
+
+\subsubsection*{2. } Найдите все элементы порядка 10 в группе $C_100$.
+
+По прошлой задаче решений будет НОД(100, 10) $ = 10$, вот они слева на право:
+\begin{equation*}
+a^{10}, a^{20}, a^{30}, a^{40}, a^{50}, a^{60}, a^{70}, a^{80}, a^{90}, a^{100}.
+\end{equation*}
+где a - порождающий элемент, $a^100 = e$ и $(a^p)^{10}$ -- искомое.
+
+\underline{\textbf{Ответ:}} $\{a^{10}, a^{20}, a^{30}, a^{40}, a^{50}, a^{60}, a^{70}, a^{80}, a^{90}, a^{100}.\}$
+
+
+\end{document}

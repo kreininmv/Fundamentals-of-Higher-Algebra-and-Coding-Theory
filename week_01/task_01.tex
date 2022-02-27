@@ -1,0 +1,169 @@
+\documentclass[a4paper,14pt]{article} % тип документа
+%\documentclass[14pt]{extreport}
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+
+\usepackage{geometry} % Простой способ задавать поля
+\geometry{top=25mm}
+\geometry{bottom=35mm}
+\geometry{left=20mm}
+\geometry{right=20mm}
+
+\setcounter{section}{0}
+
+%%%Библиотеки
+%\usepackage[warn]{mathtext}
+%\usepackage[T2A]{fontenc} % кодировка
+\usepackage[utf8]{inputenc} % кодировка исходного текста
+\usepackage[english,russian]{babel} % локализация и переносы
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{wasysym}
+\usepackage{graphicx}%Вставка картинок правильная
+\usepackage{float}%"Плавающие" картинки
+\usepackage{wrapfig}%Обтекание фигур (таблиц, картинок и прочего)
+\usepackage{fancyhdr} %загрузим пакет
+\usepackage{lscape}
+\usepackage{xcolor}
+\usepackage{dsfont}
+%\usepackage{indentfirst}
+\usepackage[normalem]{ulem}
+\usepackage{hyperref}
+
+
+
+
+%%% DRAGON STUFF
+\usepackage{scalerel}
+\usepackage{mathtools}
+
+\DeclareMathOperator*{\myint}{\ThisStyle{\rotatebox{25}{$\SavedStyle\!\int\!\!\!$}}}
+
+\DeclareMathOperator*{\myoint}{\ThisStyle{\rotatebox{25}{$\SavedStyle\!\oint\!\!\!$}}}
+
+\usepackage{scalerel}
+\usepackage{graphicx}
+%%% END 
+
+%%%Конец библиотек
+
+%%%Настройка ссылок
+\hypersetup
+{
+colorlinks=true,
+linkcolor=blue,
+filecolor=magenta,
+urlcolor=blue
+}
+%%%Конец настройки ссылок
+
+
+%%%Настройка колонтитулы
+	\pagestyle{fancy}
+	\fancyhead{}
+	\fancyhead[L]{Домашнее задание}
+	\fancyhead[R]{Крейнин Матвей, группа Б05-005}
+	\fancyfoot{}
+    \fancyfoot[C]{\thepage}
+    \fancyfoot[R]{ОВАиТК}
+%%%конец настройки колонтитулы
+
+
+
+\begin{document}
+%%%%Начало документа%%%%
+
+\section{Задание 2}
+\subsection{Задача 1}
+Докажите, что если в моноиде M у всякого элемента существует левый (не обязательно единственный) обратный, т.е.
+
+\begin{equation*}
+	\forall a \in M \exists a^{-1} : a^{-1} \cdot a = e 
+\end{equation*}
+то M является группой.
+
+Моноид является по определению полугруппой и у него есть ещё единственный нейтральный элемент.
+А группа это моноид плюс к этому существование обратного элемента. Отличие в начальных условиях только в том, что у нас может существовать несколько обратных.
+
+Тогда у нас существует обратный элемент для обратного элемента $a$. Т.е. $\exists a^{*} : a^{*} \cdot a^{-1} = e$.
+
+Тогда получим: 
+\begin{equation*}
+	a^{-1} \cdot a = e \rightarrow a^{*} \cdot a^{-1} \cdot a = a^{*} \cdot e \rightarrow e \cdot a = a^{*} e \rightarrow a = a^{*}
+\end{equation*}
+
+Теперь допустим, что $a^{-1}$ не единственный обратный элемент к элементу a, т.е. $\exists a^{\#} : a^{\#} \cdot a = a \cdot a^{\#} = e, a^{-1} \not= a^{\#}$
+
+Тогда получим:
+\begin{equation*}
+	a^{\#} \cdot a = a \cdot a^{\#} \rightarrow a^{\#} \cdot a \cdot a^{-1} = e \cdot a^{-1} \rightarrow a^{\#} \cdot e = e \cdot a^{-1} \rightarrow a^{\#} = a^{-1}.
+\end{equation*}
+Пришли к противоречию и получается, что обратный элемент единственный, тогда моноид $M$ полностью удовлетворяет опеделению группы.
+
+
+\subsection{Задача 2}
+Постройте таблицу Кэли для группы G порядка 4, в которой $\forall g \in G g^2 = e$. Приведите явный пример такой группы.
+
+\begin{table}[H]
+	\begin{tabular}{|l|l|l|l|l|}
+	\hline
+	$\cdot$ & e & a & b & c \\ \hline
+	e   & e & a & b & c \\ \hline
+	a   & a & e & c & b \\ \hline
+	b   & b & c & e & a \\ \hline
+	c   & c & b & a & e \\ \hline
+	\end{tabular}
+	\end{table}
+
+Пусть $e = 0, a = 01, b = 10, c = 11$, а за операцию $\cdot$ возьмём XOR, тогда получим таблицу:
+
+\begin{table}[H]
+	\begin{tabular}{|l|l|l|l|l|}
+	\hline
+	XOR & 0  & 01 & 10 & 11 \\ \hline
+	0   & 0  & 01 & 10 & 11 \\ \hline
+	01  & 01 & 0  & 11 & 10 \\ \hline
+	10  & 10 & 11 & 0  & 01 \\ \hline
+	11  & 11 & 10 & 01 & 0  \\ \hline
+	\end{tabular}
+	\end{table}
+
+\subsection{Задача 3}
+Проверим первое свойство группы для чисел $a = \frac{1}{2}, b = \frac{1}{3}, c = \frac{3}{4}$
+
+\begin{equation*}
+	a \odot b = \{ a - b\} = \{\frac{1}{2} - \frac{1}{3}\} = \frac{1}{6} - \lfloor \frac{1}{6} \rfloor = \frac{1}{6} - (0) = \frac{1}{6}
+\end{equation*}
+
+\begin{equation*}
+	(a \odot b) \odot c = \{\frac{1}{6} - \frac{3}{4}\} = -\frac{7}{12} - \lfloor -\frac{7}{12} \rfloor = -\frac{7}{12} - (-1) = -\frac{5}{12}
+\end{equation*}
+
+\begin{equation*}
+	b \odot  c = \{b - c\} = \{\frac{1}{3} - \frac{3}{4}\} = -\frac{5}{12} - \lfloor -\frac{5}{12} \rfloor = -\frac{5}{12} - (-1) = \frac{7}{12}
+\end{equation*}
+
+\begin{equation*}
+	a \odot (b \odot c) = \{\frac{1}{2} - \frac{7}{12}\} = -\frac{1}{12} - \lfloor -\frac{1}{12} \rfloor = \frac{11}{12}
+\end{equation*}
+
+Но $\frac{11}{12} \not = -\frac{5}{12}$, сл-но это не группа.
+
+
+\subsection{Задача 4}
+Пусть $e = 0, a = 01, b = 10, c = 11$, а за операцию $\cdot$ возьмём XOR, тогда получим таблицу:
+
+\begin{table}[H]
+	\begin{tabular}{|l|l|l|l|l|}
+	\hline
+	XOR & 0  & 01 & 10 & 11 \\ \hline
+	0   & 0  & 01 & 10 & 11 \\ \hline
+	01  & 01 & 0  & 11 & 10 \\ \hline
+	10  & 10 & 11 & 0  & 01 \\ \hline
+	11  & 11 & 10 & 01 & 0  \\ \hline
+	\end{tabular}
+\end{table}
+
+Меньшего порядка нельзя, исходя из того, что у нас должно быть как минимум 4 элемента в группе, чтобы было 4 решения уравнения.
+\end{document}
