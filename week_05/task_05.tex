@@ -1,0 +1,80 @@
+\documentclass[a4paper,14pt]{article} % тип документа
+%\documentclass[14pt]{extreport}
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+
+\usepackage{geometry} % Простой способ задавать поля
+\geometry{top=25mm}
+\geometry{bottom=35mm}
+\geometry{left=20mm}
+\geometry{right=20mm}
+
+\setcounter{section}{0}
+
+%%%Библиотеки
+%\usepackage[warn]{mathtext}
+%\usepackage[T2A]{fontenc} % кодировка
+\usepackage[utf8]{inputenc} % кодировка исходного текста
+\usepackage[english,russian]{babel} % локализация и переносы
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{wasysym}
+\usepackage{graphicx}%Вставка картинок правильная
+\usepackage{float}%"Плавающие" картинки
+\usepackage{wrapfig}%Обтекание фигур (таблиц, картинок и прочего)
+\usepackage{fancyhdr} %загрузим пакет
+\usepackage{lscape}
+\usepackage{xcolor}
+\usepackage{dsfont}
+%\usepackage{indentfirst}
+\usepackage[normalem]{ulem}
+\usepackage{hyperref}
+
+
+
+
+%%% DRAGON STUFF
+\usepackage{scalerel}
+\usepackage{mathtools}
+
+\DeclareMathOperator*{\myint}{\ThisStyle{\rotatebox{25}{$\SavedStyle\!\int\!\!\!$}}}
+
+\DeclareMathOperator*{\myoint}{\ThisStyle{\rotatebox{25}{$\SavedStyle\!\oint\!\!\!$}}}
+
+\usepackage{scalerel}
+\usepackage{graphicx}
+%%% END 
+
+%%%Конец библиотек
+
+%%%Настройка ссылок
+\hypersetup { colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=blue }
+%%%Конец настройки ссылок
+
+%%%Настройка колонтитулы
+	\pagestyle{fancy}
+	\fancyhead{}
+	\fancyhead[L]{Домашнее задание}
+	\fancyhead[R]{Крейнин Матвей, группа Б05-005}
+	\fancyfoot{}
+    \fancyfoot[C]{\thepage}
+    \fancyfoot[R]{ОВАиТК}
+%%%конец настройки колонтитулы
+
+\begin{document}
+%%%%Начало документа%%%%
+
+\section{Задание 5}
+\subsection{Задача 1}
+Рассмотрим действие группы G на множестве X -- расрасок вершин пятиугольника 3 цветами.
+Таким образом, искомое количество различных раскрасок из 3 цветов есть количество классов эквивалентности по отношению принадлежности элемента к орбите, так как два пятиугольника
+совпадают наложением, тогда и только тогда, когда существует такой поворот из группы G, что пятиугольник переходит в рассматриваемый. 
+Остается воспользоваться леммой Бернсайда: посчитаем $|X_g|$ для каждого элемента $g \in G$. Если рассматривать тождественное преобразование из G, то очевидно, что любая раскраска
+ пятиугольника будет переходить в себя же, т.е. $|X|_e = 3^5$. Теперь рассмотрим повороты относительно центра, совпадение будет возможно лишь в случае, когда все вершины покрашены в один цвет, 
+т.е. всего 3 пятиугольника. Последний случай с поворотами на $\pi$, чтобы поворот был осуществлен в этот же пятиугольник, необходима симметричность цветов относительно рассматриваемой оси, отсюда
+конкретной оси будет $3^3$ совпадающих после поворота пятиугольников. Отсюда, применяя, лемму: $col = \frac{3^5 + 4 \cdot 3 + 5 \cdot 3^3}{10} = 39$
+
+\underline{\textbf{Ответ: }} 39 раскрасок.
+
+\end{document}
